@@ -1,0 +1,191 @@
+﻿/*
+    MODEL CSS STARTS HERE
+*/
+.tingle-modal--hidden {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transition: visibility 0s linear 300ms, opacity 300ms !important;
+}
+
+.tingle-modal--visible {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: visibility 0.5s linear 100s, opacity 1000ms;
+}
+
+.tingle-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    display: -ms-flexbox;
+    display: flex;
+    visibility: hidden;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0 auto;
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: hidden;
+    background: rgba(0,0,0,.8);
+    opacity: 0;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+
+.tingle-modal__close {
+    position: fixed;
+    top: 10px;
+    right: 28px;
+    z-index: 1000;
+    padding: 0;
+    width: 5rem;
+    height: 5rem;
+    border: none;
+    background-color: transparent;
+    color: #f0f0f0;
+    font-size: 6rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .3s ease;
+    outline: none;
+}
+
+
+.tingle-modal-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    flex-shrink: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 4px;
+    background: #fff;
+    opacity: 1;
+    cursor: auto;
+    transition: transform .3s cubic-bezier(.175,.885,.32,1.275);
+    transform: translate(-50%,-50%);
+    padding: 4rem;
+    max-width: 1000px;
+    border-radius: 4px;
+}
+
+.tingle-modal-box__content {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tingle-modal h2 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-family: 'Nunito Sans',sans-serif;
+}
+
+.tingle-modal * {
+    box-sizing: border-box;
+}
+
+#mce-responses {
+    font-family: 'Arial';
+    font-size: 1rem !important;
+    margin: 10px 0;
+}
+
+.btn--big.alone {
+    margin-top: 30px;
+}
+
+.btn--big {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all .2s ease-in-out;
+    background-color: #007ac9;
+    border: 2px solid #007ac9;
+    color: #fff;
+    padding: 13px 25px;
+    font-size: 1.2rem;
+}
+
+.tingle-enabled {
+    height: 100% !important;
+}
+
+.tingle-modal__closeLabel {
+    display: none;
+}
+
+
+#mce-EMAIL {
+    color: rgba(5,22,42,.87);
+    width: 100%;
+    height: 41px;
+    font-size: 19px;
+    line-height: 1.45;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 6px 12px;
+}
+
+@media (min-width: 1280px) {
+    h2 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    h2 {
+        font-size: 1.4rem !important;
+        font-weight: 200 !important;
+        line-height: 3rem !important;
+    }
+}
+
+@media (max-width: 320px) {
+    h2 {
+        font-size: 1.4rem !important;
+        font-weight: 200 !important;
+        line-height: 3rem !important;
+    }
+}
+
+h2 {
+    font-size: 3.2rem;
+    font-weight: 200;
+    line-height: 4rem;
+}
+
+h1, h2, h3, h4, h5 {
+    margin-top: 0;
+    margin-bottom: 0;
+    letter-spacing: -.5px;
+}
+
+h1, h2, h3, h4, h5, p {
+    max-width: 100%;
+}
+
+.tingle-modal-box__content-inner .form-group {
+    text-align: center;
+    margin-bottom: 0px !important;
+}
+
+/*
+    MODEL CSS ENDS HERE
+*/

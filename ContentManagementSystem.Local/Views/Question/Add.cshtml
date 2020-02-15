@@ -1,0 +1,115 @@
+﻿@model ContentManagementSystem.ViewModel.Question_DTO
+@{
+    ViewBag.Title = Model.Id > 0 ? "Edit" : "Add";
+}
+
+<head>
+    <meta charset="UTF-8">
+
+    <script src="~/CKEditor/ckeditor.js"></script>
+    <style type="text/css">
+        .container {
+            max-width: 1130px;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm("Add", "Question", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name of Question" } })
+                @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.Answer, new { htmlAttributes = new { @id = "hdnContent", @class = "form-control" } })
+                @Html.HiddenFor(model => model.Id, new { htmlAttributes = new { @id = "hdnContent", @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Uploaded By", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.UploadedBy, new { @class = "form-control", @disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.UploadedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QueryString, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QueryString, new { htmlAttributes = new { @class = "form-control", @placeholder = "Eg: what-is-aspnet" } })
+                @Html.ValidationMessageFor(model => model.QueryString, "", new { @class = "text-danger" })
+                <p>Description: Query String is used to find your question. it should be unique and without spaces and dotes </p>
+                <p>Hint: If you question is "What is Asp.net" then query string will be "what-is-aspnet" </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Available Technologies", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TechnologyId, new SelectList(Model.TechnologyList, "Id", "TechnologyName"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TechnologyId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="container form-group">
+            <h5><label class="control-label" for="editor1">Please fill Answer with style you like</label></h5>
+            <textarea name="answerEditor" id="answerEditor">@Model.Answer
+	        </textarea>
+            @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <div class="text-center">
+                <button id="btnSubmitContent" type="submit" value="Submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+
+    CKEDITOR.replace('answerEditor').editorConfig = function (config) {
+        CKEDITOR.editorConfig = function (config) {
+            config.toolbar = [
+                { name: 'document', items: ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates'] },
+                { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+                { name: 'editing', items: ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt'] },
+                { name: 'forms', items: ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'] },
+                '/',
+                { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat'] },
+                { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language'] },
+                { name: 'links', items: ['Link', 'Unlink', 'Anchor'] },
+                { name: 'insert', items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'] },
+                '/',
+                { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
+                { name: 'colors', items: ['TextColor', 'BGColor'] },
+                { name: 'tools', items: ['Maximize', 'ShowBlocks'] },
+                { name: 'about', items: ['About'] }
+            ];
+        };
+    };
+</script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+         $(document).on("click","#btnSubmitContent",function() {
+        $("#Answer").val(CKEDITOR.instances.answerEditor.getData());
+});
+</script>
+
+

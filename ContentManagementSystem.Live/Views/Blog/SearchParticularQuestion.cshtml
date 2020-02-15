@@ -1,0 +1,16 @@
+﻿
+@model ContentManagementSystem.ViewModel.Question_DTO
+@{
+    ViewBag.Title = "Tech-Info";
+}
+
+<div class="">
+    @if (Model.Answer is null)
+    {
+        <span>Sorry, no question found.</span>
+    }
+    else
+    {
+        @Html.Raw(Model.Answer)
+    }
+</div>

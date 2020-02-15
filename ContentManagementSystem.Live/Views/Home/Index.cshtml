@@ -1,0 +1,38 @@
+﻿
+
+@model ContentManagementSystem.ViewModel.Technologies_DTO
+
+@{
+    ViewBag.Title = "Tech-Info";
+}
+
+
+<div class="well">
+    @if (Model.Technologies.Count() > 0)
+    {
+        <ul class="nav">
+            @foreach (var technology in Model.Technologies)
+            {
+                <li class="nav-header">@technology.TechnologyName</li>
+                foreach (var question in technology.QuestionList)
+                {
+                    <li>
+                        <a style="text-decoration: underline;" href="/blog/@question.QueryString">@question.Question
+                            <span class="archive-meta">
+                                -
+                                <span>@question.PublishedDate.ToString("MMMM dd, yyyy")</span>
+                            </span>
+                        </a>
+                        
+                    </li>
+                }
+            }
+        </ul>
+    }
+    else
+    {
+        <span>
+            Sorry, no question found.
+        </span>
+    }
+</div>

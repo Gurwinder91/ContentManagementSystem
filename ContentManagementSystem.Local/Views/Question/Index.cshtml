@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ContentManagementSystem.ViewModel.Question_DTO>
+@{
+    ViewBag.Title = "Index";
+}
+<h2></h2>
+<p>
+    @Html.ActionLink("Add New Blog", "Add", "Question")
+</p>
+
+<table id="mt" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Question)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Answer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TechnologyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QueryString)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="display:none">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Question)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Answer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechnologyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QueryString)
+            </td>
+        </tr>
+    }
+
+</table>
+
+   <div id="myContextMenu" class="dropdown clearfix">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:static;margin-bottom:5px;">
+        <li>
+            <a tabindex="-1" href="/Question/Edit">Edit</a>
+        </li>
+        <li>
+            <a tabindex="-1" href="/Question/Details">Details</a>
+        </li>
+        <li>
+            <a tabindex="-1" href="/Question/Delete">Delete</a>
+        </li>
+    </ul>
+</div>
+
+
+@section Scripts {
+    <script src="~/Scripts/MyContextMenu/MyContextMenu.js"></script>
+}
+

@@ -1,0 +1,14 @@
+﻿@model List<ContentManagementSystem.ViewModel.Technology_DTO>
+
+@if (Model.Count > 0)
+{
+    <div class="well">
+        <ul class="nav">
+            <li class="nav-header">Technolgies</li>
+            @foreach (var technology in Model)
+            {
+                <a class="btn btn-change" href="/technology/@technology.TechnologyQueryString">@technology.TechnologyName</a>
+            }
+        </ul>
+    </div>
+}

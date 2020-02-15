@@ -1,0 +1,94 @@
+﻿@model IEnumerable<ContentManagementSystem.ViewModel.Author_DTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2></h2>
+
+<p>
+    @Html.ActionLink("Add new User", "Register", "User")
+</p>
+<table  id="mt" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="display:none">
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Experience)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorUserName)
+        </td>
+        <td>
+            <img src="@item.Img" width="128" height="128" alt="" />
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<div id="myContextMenu" class="dropdown clearfix">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:static;margin-bottom:5px;">
+        <li>
+            <a tabindex="-1" href="/Customer/Edit">Edit</a>
+        </li>
+        <li>
+            <a tabindex="-1" href="/Customer/Details">Details</a>
+        </li>
+        <li>
+            <a tabindex="-1" href="/Customer/Delete">Delete</a>
+        </li>
+    </ul>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/MyContextMenu/MyContextMenu.js"></script>
+}
+
+
+

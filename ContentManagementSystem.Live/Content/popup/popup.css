@@ -1,0 +1,48 @@
+﻿/*#region Popup */
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+    z-index: 999999;
+    background: rgba(0,0,0,0.4);
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.popup {
+    margin: 3% auto;
+    position: relative;
+    z-index: 0;
+    padding-bottom: 0;
+    background: #fff;
+    max-width: 30% !Important;
+    padding: 0px;
+}
+
+
+.pop-content {
+    padding: 0 !important;
+}
+
+.popup-title {
+    color: white;
+    background: #428bca !important;
+    padding: 1px 7px;
+    cursor: move;
+    margin: -1px;
+}
+.popup.drag,
+.popup-title.drag {
+    cursor:move;
+}
+
+@media screen and (min-width : 304px) and (max-width : 479px) {
+    .popup {
+        width: 80%;
+        max-width: 80%;
+    }
+}
+/*#endregion */

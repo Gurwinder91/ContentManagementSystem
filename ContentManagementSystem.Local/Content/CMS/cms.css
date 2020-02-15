@@ -1,0 +1,211 @@
+﻿.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+    .form-signin .form-signin-heading, .form-signin .checkbox {
+        margin-bottom: 10px;
+    }
+
+    .form-signin .checkbox {
+        font-weight: normal;
+    }
+
+    .form-signin .form-control, .form-signin .show-hide-password {
+        position: relative;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+    .form-signin input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .form-signin input[type="password"], .form-signin .show-hide-password {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+.show-hide-password {
+    background-color: #f7f7f7;
+}
+
+.account-wall {
+    margin-top: 20px;
+    padding: 15px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-title {
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+
+.profile-img {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.need-help {
+    margin-top: 10px;
+}
+
+.new-account {
+    display: block;
+    margin-top: 10px;
+}
+
+.navbar-md {
+    background-color: #f7f7f7;
+}
+
+
+
+.navbar-login {
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session {
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size {
+    font-size: 87px;
+}
+
+@media(max-width: 500px) {
+    .my-navbar-right {
+        float: right !important;
+    }
+}
+
+
+@media(max-width: 320px) {
+    .navbar-brand {
+        font-size: 16px;
+    }
+}
+
+
+.inset {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.6), 0 1px 1px rgba(0,0,0,0.1);
+    background-color: transparent !important;
+    z-index: 999;
+}
+
+    .inset img {
+        border-radius: inherit;
+        width: inherit;
+        height: inherit;
+        display: block;
+        position: relative;
+        z-index: 998;
+    }
+
+.user-image {
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.6), 0 1px 1px rgba(0,0,0,0.1);
+    background-color: transparent !important;
+}
+
+
+
+/* Table css*/
+
+#myContextMenu {
+    position: absolute;
+    display: none;
+}
+
+.wrap {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+
+table {
+    border: 1px solid rgba(221, 221, 221, 1);
+}
+
+tr:nth-child(even) {
+    background: #F5F5F5
+}
+
+tr {
+    position: relative;
+    cursor: pointer;
+}
+
+    tr:hover {
+        background: #ededed;
+        position: relative;
+    }
+
+/*Table End*/
+
+/* SLIDER CSS STARTS HERE*/
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #428bca;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #428bca;
+        cursor: pointer;
+    }
+
+/* SLIDER CSS ENDS HERE*/

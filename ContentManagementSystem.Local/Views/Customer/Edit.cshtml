@@ -1,0 +1,150 @@
+﻿@model ContentManagementSystem.ViewModel.Author_DTO
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<link href="~/Content/BootstrapDatepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Edit", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4></h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+ 
+        <div class="form-group">
+            @Html.LabelFor(model => model.AuthorName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AuthorName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AuthorName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+            @{
+                string dateOfBirth = null;
+                if (Model.DOB != null)
+                {
+                    dateOfBirth = Model.DOB.Value.ToShortDateString();
+                };
+            }
+            <div class="col-md-10">
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" name="DOB" placeholder="mm/dd/yyyy" value="@dateOfBirth" class="form-control">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Experience, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="range" max="30" name="experience" id="experience" title="@Model.Experience" onchange="showTooltipOnSlide(this.value);" value="@Model.Experience" class="slider" data-orientation="vertical" />
+
+                @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.city, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.city, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="file">Image Preview</label>
+            <img class="user-image" src="@Model.Img" id="user-image-preview" width="128" height="128" alt="" />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-1" for="file"></label>
+            <input type="button" name="uploadImage" class="btn btn-primary" value="Upload your Image" onclick="javascript:document.getElementById('user-image').click()" />
+            @{
+                string fileName = null;
+                if (Model.File != null)
+                {
+                    fileName = Model.File.FileName;
+                }
+                else if (Model.FileCopy != null)
+                {
+                    fileName = Model.FileCopy.FileName;
+                }
+            }
+            <span class="uploadImageName" id="uploadImageName">@fileName</span>
+        </div>
+        <div class="form-group" style="display:none">
+            <input type="file" name="file" id="user-image" style="width: 100%;" />
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+                }
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/BootstrapDatepicker/bootstrap-datepicker.min.js"></script>
+    <script>
+        function readURL(file) {
+            debugger;
+            if (file) {
+                var reader = new FileReader();
+                $("#uploadImageName").text(file.name);
+
+                reader.onload = function (e) {
+                    $('#user-image-preview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        $(document).on("change", "#user-image", function () {
+            readURL(this.files[0]);
+        });
+
+        $(document).ready(function () {
+            debugger;
+            @*var model = @Html.Raw(Json.Encode(Model.FileCopy));
+            readURL(model.InputStream);*@
+
+            $('.datepicker').datepicker({
+                format: 'mm/dd/yyyy',
+                startDate: '-3d'
+            });
+
+           
+        });
+
+        function showTooltipOnSlide(val) {
+            document.getElementById('experience').setAttribute("title", val);
+        }
+
+    </script>
+}
+
+

@@ -1,0 +1,166 @@
+﻿@model ContentManagementSystem.ViewModel.Layout_DTO
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Technical-Information</title>
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/cms/modal.css" rel="stylesheet" />
+    <link href="~/Content/cms/cms.css" rel="stylesheet" />
+    <link href="~/Scripts/jQuery-autoComplete-master/jquery.auto-complete.css" rel="stylesheet" />
+</head>
+<body>
+
+    @Html.Partial("~/Views/Subscription/_Subscription.cshtml")
+    <div class="navbar navbar-fixed-top navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle manage-navbar-toggle-color" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div>
+                    <a class="navbar-brand" href="/Home/Index">TECHNICAL INFORMATION</a>
+                </div>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <div class="nav navbar-nav navbar-right">
+                    <div class="container">
+                        <div class="row">
+                            <form class="form-inline" action="/blog/SearchParticularQuestion" role="search">
+
+                                <div class="col-md-9 col-sm-9 col-lg-9">
+                                    <input type="text" name="question" id="question" class="form-control top-margin" placeholder="Search Question">
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-lg-3">
+                                    <button type="submit" class="btn btn-change">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                 aria-valuemin="0" aria-valuemax="100">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="overlay" style="display:none">
+        <div class="spinner">
+        </div>
+    </div>
+
+    <div class="container-fluid body-content top-space">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sidebar-nav-fixed">
+                    @{
+                        @Html.Action("GetAuthor", "Author", new { @id = Model is null ? null : Model.AuthorId })
+                        @Html.Action("GetAllTechnologies", "Technology")
+                    }
+                </div>
+            </div>
+            <div class="col-md-6">
+                @RenderBody()
+            </div>
+            <div class="col-md-3">
+                <div class="sidebar-nav-fixed">
+                    @{
+                        @Html.Action("GetLatestQuestionsForm", "Blog", new { @query = Model is null ? null : Model.QueryString })
+                        @Html.Action("GetPopularQuestionsForm", "Blog", new { @query = Model is null ? null : Model.QueryString })
+                    }
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <footer>
+            <div class="scroll-to-top" style="display: none;">
+                <span class="glyphicon glyphicon-arrow-up"></span>
+            </div>
+            <p>&copy; Copyright @DateTime.Now.Year. All Rights Reserved</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/cmsScripts/subscription.js"></script>
+    <script src="~/Scripts/jQuery-autoComplete-master/jquery.auto-complete.min.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+<script>
+
+    $(document).ready(function () {
+
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.scroll-to-top').addClass('show');
+            } else {
+                $('.scroll-to-top').removeClass('show');
+            }
+
+            var s = $(window).scrollTop(),
+                d = $(document).height(),
+                c = $(window).height();
+            if (d == c) {
+                return false;
+            }
+            scrollPercent = (s / (d - c)) * 100;
+            var position = scrollPercent;
+
+            $(".progress-bar").css('width', position + '%');
+        });
+
+        function scrollToTop() {
+            verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
+            element = $('body');
+            offset = element.offset();
+            offsetTop = offset.top;
+            $('html, body').animate({ scrollTop: offsetTop }, 500, 'linear');
+        }
+
+        //Click event to scroll to top
+        $('.scroll-to-top').click(function () {
+            scrollToTop();
+        });
+
+
+        $(document).on('ajaxStart', function () {
+            $(".overlay").show();
+        }).on('ajaxStop', function () {
+            $(".overlay").hide();
+            });
+
+
+        $('input[name="question"]').autoComplete({
+            source: function (term, response) {
+                $.getJSON('/blog/search/', { question: term }, function (data) {
+                    response(data)
+                });
+            },
+            renderItem: function (item, search) {
+                search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+                return '<div class="autocomplete-suggestion" data-val="' + item + '">'
+                    + item.replace(re, "<b>$1</b>") + '</div>';
+            }
+        });
+    });
+</script>

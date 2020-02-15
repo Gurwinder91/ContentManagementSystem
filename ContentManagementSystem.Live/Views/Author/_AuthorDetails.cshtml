@@ -1,0 +1,15 @@
+﻿
+@model ContentManagementSystem.ViewModel.Author_DTO
+
+@if (Model != null)
+{
+    <div class="well">
+        <h5>@Model.GetAuthorHeader</h5>
+    <div class="text-center">
+        <img src="@Model.Img" width="128" height="128" alt="Dean North" class="avatar avatar-128 wp-user-avatar wp-user-avatar-128 alignnone photo" src-orig="https://i1.wp.com/www.atlascode.com/wp-content/uploads/2017/03/dean.png?fit=128%2C128&amp;ssl=1" scale="1.25">
+        <h3 class="name">@Model.AuthorName</h3>
+        <h5 class="job-title">@Model.GetAuthorExperience</h5>
+        <p class="description">@Model.Description</p>
+    </div>
+</div>
+}

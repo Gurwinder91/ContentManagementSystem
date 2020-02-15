@@ -1,0 +1,66 @@
+﻿@using ContentManagementSystem.Local.Extensions;
+@using Microsoft.AspNet.Identity;
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle my-navbar-right" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div class="navbar-login">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <p class="text-center">
+                                        <a href="/Customer/Edit" class="inset">
+                                            @if (@User.Identity.GetUserProfile() is null || @User.Identity.GetUserProfile().Imgbytes is null)
+                                            {
+                                                <span class="glyphicon glyphicon-user icon-size"></span>
+                                            }
+                                            else
+                                            {
+                                                <img src="@User.Identity.GetUserProfile().Img" />
+                                            }
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="col-lg-8">
+                                    <p class="text-left"><strong></strong></p>
+                                    @if (User.Identity.GetUserProfile() != null)
+                                    {
+                                        <p class="text-left small">@User.Identity.GetUserProfile().AuthorName</p>
+                                    }
+
+                                    <p class="text-left">
+                                        <a href="/User/ChangePassword" class="btn btn-primary btn-block btn-sm">@User.Identity.GetUserName()</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <div class="navbar-login navbar-login-session">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p>
+                                        <a class="btn btn-danger btn-block" href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    }
+}
+
+

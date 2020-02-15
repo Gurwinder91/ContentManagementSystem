@@ -1,0 +1,30 @@
+﻿@model ContentManagementSystem.ViewModel.Technology_DTO
+
+<div class="well">
+    <ul class="nav">
+        <li class="nav-header">@Model.TechnologyName</li>
+        @if (Model.QuestionList.Count > 0)
+        {
+            foreach (var question in Model.QuestionList)
+            {
+                <li>
+                    <a style="text-decoration: underline;" href="/blog/@question.QueryString">
+                        @question.Question
+                    <span class="archive-meta">
+                        -
+                        <span>@question.PublishedDate.ToString("MMMM dd, yyyy")</span>
+                    </span>
+                </a>
+                </li>
+            }
+        }
+        else
+        {
+            <li>
+                Sorry, no question found.
+            </li>
+        }
+
+    </ul>
+</div>
+

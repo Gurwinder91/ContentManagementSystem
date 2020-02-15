@@ -1,0 +1,323 @@
+﻿#mce-error-response {
+    color: #b94a48;
+    border-color: #eed3d7;
+}
+
+
+#mce-success-response {
+    color: #27d465;
+}
+
+body {
+    background-color: #f4f5f9;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+body {
+    padding-top: 50px;
+    font-family: 'Nunito Sans',sans-serif;
+}
+
+/*
+    PROGRESS BAR CSS STARTS HERE
+*/
+
+.progress-bar {
+    transition: none !important;
+    background-color: #007ac9 !important;
+}
+
+.progress {
+    background: none !important;
+    position: absolute;
+    bottom: 0px;
+    z-index: 99999;
+    width: 100%;
+    margin: 0px !important;
+    height: 4px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+/*
+    PROGRESS BAR CSS STARTS HERE
+*/
+
+
+/*
+    SCROLL TO TOP CSS STARTS HERE
+*/
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 3%;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 13px;
+    text-transform: uppercase;
+    line-height: 38px;
+    text-align: center;
+    z-index: 100;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #007ac9;
+    -webkit-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+@media (hover:hover) {
+    .scroll-to-top:hover {
+        color: #ffffff;
+        background-color: #443f45;
+    }
+}
+
+@media (hover:hover) {
+    .manage-navbar-toggle-color:hover, .manage-navbar-toggle-color:focus {
+        background-color: #dddddd !important;
+    }
+}
+
+.manage-navbar-toggle-color {
+    background-color: transparent !important;
+    outline:none;
+}
+
+/*
+    SCROLL TO TOP CSS ENDS HERE
+*/
+
+
+
+/*
+    LOADER CSS ENDS HERE
+*/
+
+.spinner {
+    position: absolute;
+    height: 20px;
+    width: 30px;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    margin-left: -50px;
+    margin-top: -50px;
+    background: url(../../Images/Loader/ajax-loader.gif);
+    background-size: 100%;
+    z-index: 9999999;
+}
+
+.overlay {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    z-index: 99999999;
+    background-color: rgba(247, 246, 247, 0.28);
+    color: white;
+}
+
+/*
+    LOADER CSS ENDS HERE
+*/
+
+
+/*
+    HEADER CSS STARTS HERE
+*/
+
+.top-margin {
+    margin-top: 10px;
+}
+@media(max-width: 320px) {
+    .navbar-brand {
+        font-size: 17px;
+    }
+}
+/*
+    HEADER CSS ENDS HERE
+*/
+/*
+    INNER CONTENT CSS ENDS HERE
+*/
+.top-space {
+    margin-top: 3%;
+}
+
+.sidebar-nav-fixed {
+    position: relative;
+    width: 100%;
+}
+
+@media (min-width: 1200px) {
+    .sidebar-nav-fixed {
+        position: fixed !important;
+        width: 22%;
+    }
+}
+
+/*@media (min-width: 992px) {
+    .sidebar-nav-fixed {
+        width: 20%;
+    }
+}*/
+
+.well .name {
+    text-transform: capitalize;
+    margin: 10px 0;
+}
+
+.well h3 {
+    font-family: BRANDON_BLD;
+    color: #212424;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-top: 50px;
+}
+
+.well p {
+    font-family: BRANDON_REG;
+}
+
+.well .avatar {
+    margin: 0;
+    border-radius: 50%;
+}
+
+.well img {
+    max-width: 95%;
+    margin: 30px 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+img {
+    border: 0;
+}
+
+.archive-meta {
+    color: #818181;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.nav > li > a span {
+    text-decoration: none !important;
+}
+
+
+/*
+    INNER CONTENT CSS ENDS HERE
+*/
+
+
+/* Create a medium height at 40px */
+.navbar-md {
+    min-height: 50px
+}
+
+    .navbar-md .navbar-brand,
+    .navbar-md .navbar-nav > li > a {
+        padding-top: 10px;
+        padding-bottom: 10px
+    }
+
+    .navbar-md .navbar-brand {
+        height: 40px
+    }
+
+    .navbar-md .navbar-toggle {
+        margin: 6px 12px 6px 0px;
+        padding: 6px 7px 6px 7px;
+    }
+
+        .navbar-md .navbar-toggle .icon-bar {
+            width: 19px;
+        }
+
+
+/* Create a small height at 30px */
+.navbar-sm {
+    min-height: 50px
+}
+
+    .navbar-sm .navbar-brand,
+    .navbar-sm .navbar-nav > li > a {
+        padding-top: 5px;
+        padding-bottom: 5px
+    }
+
+    .navbar-sm .navbar-brand {
+        height: 30px
+    }
+
+    .navbar-sm .navbar-toggle {
+        margin: 3px 9px 3px 0px;
+        padding: 4px 4px 4px 4px;
+    }
+
+        .navbar-sm .navbar-toggle .icon-bar {
+            width: 16px;
+        }
+
+
+
+
+
+/*
+    BUTTON EFFECT CSS ENDS HERE
+*/
+
+.btn-change {
+    background: #007ac9;
+    margin: 10px;
+    box-shadow: 0 0 1px #ccc;
+    -webkit-transition: all 0.5s ease-in-out;
+    color: #fff;
+}
+
+    .btn-change:hover {
+        -webkit-transform: scale(1.1);
+        background: #04436b;
+        color: #fff;
+    }
+
+/*
+    BUTTON EFFECTT CSS ENDS HERE
+*/
+
+
+/*
+    FOOTER CSS STARTS HERE
+*/
+footer p {
+    text-align: center;
+}
+/*
+    FOOTER CSS ENDS HERE
+*/
